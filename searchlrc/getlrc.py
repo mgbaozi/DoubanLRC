@@ -59,3 +59,12 @@ class FromBaiduBackUp(object):
 		lrc = req_lrc.read().decode('gb2312').encode('utf-8')
 		return FormatLRC(lrc), mp3_url
 
+
+class FromFile(object):
+	@classmethod
+	def getlrc(cls,song_name,artist):
+		file_name = './lrc/' + song_name + '-' + artist + '.lrc'
+		lrc = None
+		with open(file_name) as lrc_file:
+			lrc = lrc_file.read()
+		return FormatLRC(lrc),None

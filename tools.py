@@ -46,8 +46,11 @@ class GetLRC(object):
 			try:
 				res,song_url = FromBaiduBackUp.getlrc(song_name,artist)
 			except:
-				res = None
-				song_url = None
+				try:
+					res,song_url = FromFile.getlrc(song_name,artist)
+				except:
+					res = None
+					song_url = None
 		lrc = res if res else []
 		song_url = song_url if song_url else ''
 		#make sure lrc is lyric or empty list
